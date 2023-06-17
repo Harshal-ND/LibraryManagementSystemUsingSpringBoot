@@ -1,10 +1,12 @@
-package com.lms.service;
+package com.lms.librarymanagementsystem.service;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lms.model.Book;
-import com.lms.repository.BookRepository;
+import com.lms.librarymanagementsystem.model.Book;
+import com.lms.librarymanagementsystem.repository.BookRepository;
 
 @Service
 public class BookService {
@@ -12,11 +14,15 @@ public class BookService {
     @Autowired
     public BookRepository bookRepository;
 
-    public Iterable<Book> getAllBooks()
+    public List<Book> getAllBooks()
     {
         return this.bookRepository.findAll();
     }
 
+    public List<Book> searchBooks(String searchQuery)
+    {
+        return this.bookRepository.findByTitleLikeIgnoreCase(searchQuery);
+    }
 
     public Book getBookById (Integer id){
 

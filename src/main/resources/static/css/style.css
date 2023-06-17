@@ -1,0 +1,42 @@
+*{
+    font-family: Montserrat;
+}
+
+#common_nav
+{
+    background-color: #00aff0;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    border-color: white;
+    
+}
+#common_nav a{
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: #00aff0;
+    border-color: #43c1ef;
+    border-radius: 0%;
+}
+.head1
+{
+    font-size: smaller;
+}
+
+.head2
+{
+    font-size: x-small;
+}
+.head3
+{
+    font-weight: 500;
+}
+
+#form_box
+{
+    background-color: #EEEEEE;
+}
+
+
