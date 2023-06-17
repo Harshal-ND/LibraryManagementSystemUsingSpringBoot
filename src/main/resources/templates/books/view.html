@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="layout.html::common_header">
+</head>
+<body>
+    <div  th:include="layout.html::common_navbar"></div>
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 offset-lg-7">
+                <form method="get" action="/view">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="Search by book title" value="">
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-light">Search</button>
+                    </div>
+                </div>
+                    
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Creating dynamic rows -->
+    
+    <!-- <div class="container">
+        <table class="table table-hover">
+
+            <tr>
+                <th>Book Id</th>
+                <th>Bood Title</th>
+                <th>Book Author</th>
+                <th>Book Category</th>
+                <th>Book Borrower</th>
+                <th>Issue Date</th>
+                <th>Return Date</th>
+                <th>Late fine</th>
+            </tr>
+            <tr th:each="b:${viewBooks}">
+                <td th:text="${b.id}"></td>
+                <td th:text="${b.title}"></td>
+                <td th:text="${b.author?.name}"></td>
+                <td th:text="${b.category?.name}"></td>
+                <td th:text="${b.borrower?.username}"></td>
+                <td th:text="${b.issueDate}"></td>
+                <td th:text="${b.returnDate}"></td>
+                <td th:text="${b.fine}"></td>
+                <td><a th:href="@{/update(id=${b.id})}"><button type="button" class="btn btn-warning">Update</button></a></td>
+                <td><a th:href="@{/delete/{id}(id=${b.id})}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+            </tr>
+        </table> -->
+
+        <div class="container mt-5" id="dynamic_accord">
+            <div class="row">
+                <div class="col-lg-12" th:each="b:${viewBooks}">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                              <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-2"><span class="head1">Book Id: </span> <span class="head3" th:text="${b.id}"></span></div>
+                                    <div class="col-lg-6"><span class="head1">Title: </span> <span class="head3" th:text="${b.title}"></span></div>
+                                    <div class="col-lg-2"><span class="head1">Author: </span> <span class="head3" th:text="${b.author?.name}"></span></div>
+                                    <div class="col-lg-2"><span class="head1">Category: </span> <span class="head3" th:text="${b.category?.name}"></span></div>
+                                    
+                                    
+                                </div>
+                              </div>
+                            </button>
+                          </h2>
+                          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <div class="col-lg-2 offset-lg-2"><span class="head2">Borrower: </span> <span class="head3" th:text="${b.borrower?.username}"></span></div>
+                                        <div class="col-lg-2"><span class="head2">Issue Date: </span> <span class="head3" th:text="${b.issueDate}"></span></div>
+                                        <div class="col-lg-2"><span class="head2">Return Date: </span> <span class="head3" th:text="${b.returnDate}"></span></div>
+                                        <div class="col-lg-2"><span class="head2">Fine if any: </span> <span class="head3" th:text="${b.fine}"></span></div>
+                                        <div class="col-lg-1"><span class="head2"></span><span><a th:href="@{/update(id=${b.id})}">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                                              </svg>
+                                        </a>
+                                        </span> </div>
+
+                                        <div class="col-lg-1"><span class="head2"></span><span><a th:href="@{/delete/{id}(id=${b.id})}">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                              </svg>
+                                        </a>
+                                        </span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="layout.html::common_header">
+   
+</head>
+<body>
+    <div th:include="layout.html::common_navbar">
+
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-2 offset-lg-5"><h3>Update Book</h3></div>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4 mt-5 pt-5" id="form_box">
+          <form class="container" action="/update" method="post" th:object="${updatedBook}" >
+            <input type="hidden" th:field="*{id}"/>
+              <div class="mb-3" >
+            <label for="b_name" class="form-label">Book Title</label>
+            <input type="text" class="form-control" id="b_name" name="b_name"  th:field="*{title}">
+           
+          </div>
+          <div class="mb-3">
+            <label for="b_author" class="form-label">Book Author Id</label>
+            <input type="text" class="form-control" id="b_author" name="b_author" th:field="*{author.id}" >
+          </div>
+          
+        
+          <div class="mb-3" >
+            <label for="b_publisher" class="form-label">Book Publisher</label>
+            <input type="text" class="form-control" id="b_publisher" name="b_publisher"  th:field="*{publisher}">
+           
+          </div>
+      
+          <div class="mb-3" >
+            <label for="b_category" class="form-label">Book Category Id</label>
+            <input type="text" class="form-control" id="b_category" name="b_category"  th:field="*{category.id}">
+           
+          </div>
+      
+          <div class="mb-3" >
+            <label for="b_borrower" class="form-label">Borrower Id</label>
+            <input type="text" class="form-control" id="b_borrower" name="b_borrower"  th:field="*{borrower.id}">
+           
+          </div>
+         <div class="mb-3" >
+          <label for="b_issue_date" class="form-label">Issue Date</label>
+          <input type="date" class="form-control" id="b_issue_date" name="b_issue_date"  th:field="*{issueDate}">
+         
+        </div> 
+         <!-- <div class="mb-3" >
+          <label for="b_return_date" class="form-label"> Return Date</label>
+          <input type="text" class="form-control" id="b_return_date" name="b_return_date"  th:field="*{returnDate}">
+         
+        </div>   -->
+        <div class="mb-3" >
+          <label for="b_fine" class="form-label">Fine</label>
+          <input type="text" class="form-control" id="b_fine" name="b_fine"  th:field="*{fine}">
+         
+        </div> 
+        
+      
+          <div class="mb-3">
+              <button type="submit" class="btn btn-primary mb-3">Submit </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+   
+</body>
+</html>

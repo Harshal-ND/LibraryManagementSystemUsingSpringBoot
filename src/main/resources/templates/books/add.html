@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="layout.html::common_header">
+   
+</head>
+<body>
+    <div th:include="layout.html::common_navbar">
+
+    </div>
+    
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-2 offset-lg-5"><h3>Add Book</h3></div>
+  </div>
+<div class="row ">
+  <div class="col-lg-4 offset-lg-4 mt-5 pt-5" id="form_box">
+    <form action="/add" method="post" th:object="${newBook}" >
+      <div class="mb-3" >
+    <label for="b_name" class="form-label">Book Title</label>
+    <input type="text" class="form-control" id="b_name" name="b_name"  th:field="*{title}">
+   
+  </div>
+  <div class="mb-3">
+    <label for="b_author" class="form-label">Book Author</label>
+    <input type="text" class="form-control" id="b_author" name="b_author" th:field="*{author}" >
+  </div>
+  
+
+  <div class="mb-3" >
+    <label for="b_publisher" class="form-label">Book Publisher</label>
+    <input type="text" class="form-control" id="b_publisher" name="b_publisher"  th:field="*{publisher}">
+   
+  </div>
+
+  <div class="mb-3" >
+    <label for="b_category" class="form-label">Book Category</label>
+    <input type="text" class="form-control" id="b_category" name="b_category"  th:field="*{category}">
+   
+  </div>
+
+
+  <div class="mb-3">
+      <button type="submit" class="btn btn-primary mb-3">Submit </button>
+    </div>
+  </form>
+  </div>
+</div>
+</div>
+
+   
+    
+</body>
+</html>
